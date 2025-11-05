@@ -1,0 +1,68 @@
+site_name: High-Level Design Documentation
+site_description: System Architecture and Technical Documentation
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+docs_dir: docs
+
+nav:
+  - Home: README.md
+  - HLD:
+      - Overview: hld/README.md
+      - Executive Summary: hld/01-executive-summary.md
+      - System Overview: hld/02-system-overview.md
+      - Business Requirements: hld/03-business-requirements.md
+      - Domain Model: hld/04-domain-model.md
+      - Architecture Overview: hld/05-architecture-overview.md
+      - Microservices Catalog: hld/06-microservices-catalog.md
+      - Data Architecture: hld/07-data-architecture.md
+      - Integration Architecture: hld/08-integration-architecture.md
+      - Hardware Specifications: hld/09-hardware-specifications.md
+      - Edge Computing Design: hld/10-edge-computing-design.md
+      - Security & Compliance: hld/11-security-compliance.md
+      - Operational Design: hld/12-operational-design.md
+      - Deployment & CI/CD: hld/13-deployment-cicd.md
+      - API Contracts: hld/14-api-contracts.md
+      - Event Streams: hld/15-event-streams.md
+      - Reporting & Analytics: hld/16-reporting-analytics.md
+      - Future Roadmap: hld/17-future-roadmap.md
+      - Glossary: hld/99-glossary.md
+
+plugins:
+  - search
+  - mermaid2
+  - pdf-export:
+      combined: true
+      combined_output_path: HLD-documentation.pdf
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # format option removed to fix YAML error - defaults to built-in mermaid2 behavior
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  generator: false

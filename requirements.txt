@@ -1,0 +1,8 @@
+mkdocs==1.5.3
+mkdocs-material==9.5.3
+mkdocs-mermaid2-plugin==1.1.1
+pymdown-extensions==10.7
+
+# PDF export plugin (requires GTK libraries - works in Linux/Docker, limited on Windows)
+# Disabled in mkdocs.yml by default - see PDF-GENERATION.md for alternatives
+mkdocs-pdf-export-plugin==0.5.10
