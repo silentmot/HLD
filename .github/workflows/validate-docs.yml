@@ -39,6 +39,43 @@ jobs:
             - name: Install Redocly CLI
               run: npm install -g @redocly/cli
 
+            - name: Patch mermaid2 plugin (workaround)
+              run: |
+                  python - <<'PY'
+                  import os, sys
+                  try:
+                      import mermaid2
+                  except Exception as e:
+                      print('Could not import mermaid2:', e)
+                      sys.exit(1)
+                  p = os.path.join(os.path.dirname(mermaid2.__file__), 'plugin.py')
+                  if not os.path.exists(p):
+                      print('mermaid2 plugin.py not found at', p)
+                      sys.exit(1)
+                  with open(p, 'r', encoding='utf-8') as fh:
+                      s = fh.read()
+                  s_new = s
+                  s_new = s_new.replace(
+                      "return self._activate_custom_loader",
+                      "        _loader = getattr(self, '_activate_custom_loader', None)\n"
+                      "        if _loader is None:\n"
+                      "            _loader = getattr(self, 'activate_custom_loader', None)\n"
+                      "        if _loader is None:\n"
+                      "            raise RuntimeError('mermaid2 plugin: no activate_custom_loader available')\n"
+                      "        return _loader"
+                  )
+                  s_new = s_new.replace(
+                      "if format_fn.name == CUSTOM_FENCE_FN:",
+                      "if format_fn is not None and getattr(format_fn, 'name', None) == CUSTOM_FENCE_FN:"
+                  )
+                  if s_new == s:
+                      print('No substitutions made; file may already be patched.')
+                  else:
+                      with open(p, 'w', encoding='utf-8') as fh:
+                          fh.write(s_new)
+                      print('Patched', p)
+                  PY
+
             - name: Validate MkDocs configuration
               run: |
                   mkdocs build --strict --verbose
