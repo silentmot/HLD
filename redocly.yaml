@@ -1,0 +1,89 @@
+# Redocly API Configuration
+# Unified API documentation portal for all SWMS microservices
+
+apis:
+  trip-service@v1:
+    root: docs/api/trip-service/openapi.yaml
+    
+  device-service@v1:
+    root: docs/api/device-service/openapi.yaml
+    
+  vehicle-service@v1:
+    root: docs/api/vehicle-service/openapi.yaml
+    
+  contract-service@v1:
+    root: docs/api/contract-service/openapi.yaml
+    
+  user-service@v1:
+    root: docs/api/user-service/openapi.yaml
+    
+  payment-service@v1:
+    root: docs/api/payment-service/openapi.yaml
+    
+  reports-service@v1:
+    root: docs/api/reports-service/openapi.yaml
+    
+  inventory-service@v1:
+    root: docs/api/inventory-service/openapi.yaml
+
+lint:
+  extends:
+    - recommended
+  rules:
+    no-unused-components: error
+    no-invalid-parameter-examples: error
+    no-ambiguous-paths: error
+    operation-operationId-unique: error
+    path-not-include-query: error
+    operation-4xx-response: warn
+
+theme:
+  openapi:
+    # Enable interactive API console
+    tryItOut: true
+    
+    # Remember authentication tokens
+    authPersistence: localStorage
+    
+    # Show request/response samples
+    generateCodeSamples:
+      languages:
+        - lang: curl
+        - lang: javascript
+        - lang: python
+        - lang: csharp
+    
+    # Expand operations by default
+    expandResponses: "200,201"
+    
+    # Group by tags
+    tagGroups:
+      - name: Trip Management
+        tags:
+          - Trips
+      - name: Device Management
+        tags:
+          - Devices
+      - name: Vehicle & Contract
+        tags:
+          - Vehicles
+          - Contracts
+      - name: User & Auth
+        tags:
+          - Authentication
+          - Users
+      - name: Reporting
+        tags:
+          - Reports
+          - Payments
+      - name: Inventory
+        tags:
+          - Inventory
+
+  colors:
+    primary:
+      main: '#3f51b5'
+    success:
+      main: '#00c853'
+    error:
+      main: '#f44336'
