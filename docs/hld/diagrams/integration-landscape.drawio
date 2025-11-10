@@ -1,0 +1,10 @@
+# Integration Landscape
+
+This is a placeholder for draw.io diagram.
+
+## Components
+- SWMS Core Services
+- Device Integration Layer
+- External Systems (Government, SAP, Vendor APIs)
+- Communication Protocols
+- API Gateway

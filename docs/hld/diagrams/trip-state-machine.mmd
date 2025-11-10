@@ -1,0 +1,11 @@
+---
+title: Trip State Machine
+---
+stateDiagram-v2
+    [*] --> INITIATED
+    INITIATED --> WEIGHED_IN
+    WEIGHED_IN --> WEIGHED_OUT
+    WEIGHED_OUT --> COMPLETED
+    COMPLETED --> [*]
+
+    %% Add error states and transitions

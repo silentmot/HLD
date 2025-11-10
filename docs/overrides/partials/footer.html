@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+  <!-- OpenAI Documentation Assistant Integration -->
+  <script>
+    window.OpenAI = {
+      apiKey: 'OPENAI_API_KEY', // Replace with actual API key in production
+      assistant: {
+        id: 'asst_SWMS_HLD',
+        instructions: `You are a technical assistant for the SWMS (Smart Waste Management System) High-Level Design documentation.
+
+CRITICAL RULES:
+1. Answer based ONLY on the documentation repository content
+2. NEVER simplify or assume information not present in the docs
+3. Always cite specific section numbers and document names
+4. Maintain technical accuracy - this is authoritative documentation
+5. For device protocols, hardware specs, and integration details: be precise and complete
+6. When referencing API endpoints, link to the OpenAPI specifications
+7. If information is not in the documentation, explicitly state that
+
+TRAINING CORPUS:
+- All markdown files in docs/hld/
+- All OpenAPI specs in docs/api/
+- All diagram sources in docs/diagrams/
+
+RESPONSE FORMAT:
+- Start with a direct answer
+- Cite document sections: e.g., "Per Section 08, Integration Architecture..."
+- Link to relevant diagrams when applicable
+- For API questions, reference the specific OpenAPI spec
+- Never use marketing language or simplification`,
+        model: 'gpt-4-turbo'
+      },
+      // Widget configuration
+      theme: {
+        primaryColor: '#3f51b5',
+        position: 'bottom-right',
+        openByDefault: false
+      },
+      placeholder: 'Ask about SWMS architecture, APIs, hardware specs...',
+      welcomeMessage: 'Hi! I can help you navigate the SWMS HLD documentation. Ask me about architecture, APIs, device integration, or any technical details.'
+    };
+  </script>
+
+  <!-- Load OpenAI Assistant SDK -->
+  <script src="https://cdn.openai.com/assistants/v1/embed.js" async defer></script>
+</body>
+</html>

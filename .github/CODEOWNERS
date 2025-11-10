@@ -1,0 +1,59 @@
+# CODEOWNERS - Code Review Ownership for HLD Documentation
+#
+# This file defines ownership and review requirements for documentation changes.
+# When a PR modifies files matching these patterns, the specified teams/users
+# will be automatically requested as reviewers.
+#
+# Syntax: <file-pattern> <owner1> <owner2> ...
+# Owners can be: @username @org/team-name
+
+# Default owners for all documentation
+* @architects
+
+# High-Level Design Documents - Core Architecture
+docs/hld/04-domain-model.md @architects @domain-experts
+docs/hld/05-architecture-overview.md @architects @tech-leads
+docs/hld/06-microservices-catalog.md @architects @backend-team
+docs/hld/07-data-architecture.md @architects @database-team
+
+# Integration & Hardware - Device Team
+docs/hld/08-integration-architecture.md @architects @device-team
+docs/hld/09-hardware-specifications.md @hardware-lead @procurement @device-team
+
+# Edge Computing & Infrastructure
+docs/hld/10-edge-computing-design.md @architects @devops-team @edge-engineers
+
+# Security & Compliance - Security Team
+docs/hld/11-security-compliance.md @security-team @compliance-officer
+
+# Operations & Deployment - DevOps
+docs/hld/12-operational-design.md @devops-team @sre-team
+docs/hld/13-deployment-cicd.md @devops-team @platform-team
+
+# API Contracts - API Owners
+docs/hld/14-api-contracts.md @architects @api-owners @backend-team
+docs/api/ @api-owners @backend-team
+
+# Event Streams & Workflows - Backend Team
+docs/hld/15-event-streams.md @architects @backend-team @integration-team
+
+# Reporting & Analytics - Data Team
+docs/hld/16-reporting-analytics.md @data-team @business-analysts
+
+# Diagrams - Architecture Team
+docs/hld/diagrams/ @architects @tech-leads
+
+# OpenAPI Specifications - Service-Specific Ownership
+docs/api/trip-service/ @trip-service-team @backend-team
+docs/api/device-service/ @device-team @backend-team
+docs/api/vehicle-service/ @vehicle-service-team @backend-team
+docs/api/contract-service/ @contract-service-team @backend-team
+docs/api/user-service/ @user-service-team @security-team
+docs/api/payment-service/ @payment-service-team @finance-team
+docs/api/reports-service/ @reports-service-team @data-team
+docs/api/inventory-service/ @inventory-service-team @operations-team
+
+# Configuration & Tooling
+mkdocs.yml @architects @devops-team
+redocly.yaml @api-owners @devops-team
+.github/ @devops-team

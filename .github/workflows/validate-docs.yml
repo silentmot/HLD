@@ -1,0 +1,200 @@
+name: Validate Documentation
+
+on:
+    pull_request:
+        branches:
+            - main
+        paths:
+            - "docs/**"
+            - "mkdocs.yml"
+            - "redocly.yaml"
+
+jobs:
+    validate:
+        name: Documentation Quality Checks
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+                  cache: "pip"
+
+            - name: Install dependencies
+              run: |
+                  pip install --upgrade pip
+                  pip install -r requirements.txt
+                  pip install openapi-spec-validator
+
+            - name: Setup Node.js for Redocly
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "18"
+
+            - name: Install Redocly CLI
+              run: npm install -g @redocly/cli
+
+            - name: Validate MkDocs configuration
+              run: |
+                  mkdocs build --strict --verbose
+
+            - name: Validate OpenAPI specifications
+              run: |
+                  echo "## OpenAPI Validation Results" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  for spec in docs/api/*/openapi.yaml; do
+                    service=$(basename $(dirname "$spec"))
+                    echo "Validating $service..."
+                    if openapi-spec-validator "$spec"; then
+                      echo "- ✅ **$service**: Valid" >> $GITHUB_STEP_SUMMARY
+                    else
+                      echo "- ❌ **$service**: Invalid" >> $GITHUB_STEP_SUMMARY
+                      exit 1
+                    fi
+                  done
+
+            - name: Lint with Redocly
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## Redocly Lint Results" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  if redocly lint; then
+                    echo "✅ All API specs pass Redocly linting rules" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "❌ Redocly linting found issues" >> $GITHUB_STEP_SUMMARY
+                    exit 1
+                  fi
+
+            - name: Check for broken internal links
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## Internal Link Check" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  # Build site and check for broken links
+                  mkdocs build --strict
+
+                  # Simple check for markdown links
+                  broken=0
+                  for file in docs/hld/*.md; do
+                    while IFS= read -r line; do
+                      if [[ $line =~ \[.*\]\((.*\.md.*)\) ]]; then
+                        link="${BASH_REMATCH[1]}"
+                        # Remove anchors
+                        link="${link%%#*}"
+                        if [[ ! -f "docs/hld/$link" && ! -f "docs/$link" ]]; then
+                          echo "❌ Broken link in $file: $link"
+                          broken=$((broken + 1))
+                        fi
+                      fi
+                    done < "$file"
+                  done
+
+                  if [ $broken -eq 0 ]; then
+                    echo "✅ No broken internal links found" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "❌ Found $broken broken internal link(s)" >> $GITHUB_STEP_SUMMARY
+                    exit 1
+                  fi
+
+            - name: Check for banned terminology (GZANSP compliance)
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## GZANSP Compliance Check" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  # Banned terms from GZANSP protocol
+                  banned_terms=(
+                    "Comprehensive" "Enhanced" "Advanced" "Corrected" "Fixed"
+                    "Implemented" "Future" "Final" "Improved" "Upgraded"
+                    "Perfected" "Complete" "Newer" "Refined" "Optimized"
+                    "Best" "Ideal" "Flawless" "Optimal" "Executive"
+                    "New" "Old" "Updated" "Modified" "Migrated"
+                  )
+
+                  violations=0
+                  for term in "${banned_terms[@]}"; do
+                    if git diff origin/main...HEAD -- 'docs/hld/*.md' | grep -i "^+.*$term" > /dev/null; then
+                      echo "⚠️ Found banned term in changes: **$term**" >> $GITHUB_STEP_SUMMARY
+                      violations=$((violations + 1))
+                    fi
+                  done
+
+                  if [ $violations -eq 0 ]; then
+                    echo "✅ No banned terminology found" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "" >> $GITHUB_STEP_SUMMARY
+                    echo "❌ Found $violations banned term(s). Please review GZANSP protocol." >> $GITHUB_STEP_SUMMARY
+                    exit 1
+                  fi
+
+            - name: Validate Mermaid diagrams
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## Mermaid Diagram Validation" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  npm install -g @mermaid-js/mermaid-cli
+
+                  diagram_errors=0
+                  for diagram in docs/hld/diagrams/*.mmd; do
+                    if [ -f "$diagram" ]; then
+                      diagram_name=$(basename "$diagram")
+                      if mmdc -i "$diagram" -o "/tmp/${diagram_name}.png" 2>&1; then
+                        echo "✅ $diagram_name" >> $GITHUB_STEP_SUMMARY
+                      else
+                        echo "❌ $diagram_name - Syntax error" >> $GITHUB_STEP_SUMMARY
+                        diagram_errors=$((diagram_errors + 1))
+                      fi
+                    fi
+                  done
+
+                  if [ $diagram_errors -gt 0 ]; then
+                    exit 1
+                  fi
+
+            - name: Check for progressive disclosure structure
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "## Progressive Disclosure Check" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+
+                  missing=0
+                  for file in docs/hld/0[1-9]-*.md docs/hld/1[0-7]-*.md; do
+                    if [ -f "$file" ]; then
+                      filename=$(basename "$file")
+
+                      # Check for Executive Summary section
+                      if ! grep -q "## Executive Summary" "$file"; then
+                        echo "⚠️ $filename missing Executive Summary section" >> $GITHUB_STEP_SUMMARY
+                        missing=$((missing + 1))
+                      fi
+
+                      # Check for collapsible details
+                      if ! grep -q "<details>" "$file"; then
+                        echo "⚠️ $filename missing collapsible sections" >> $GITHUB_STEP_SUMMARY
+                        missing=$((missing + 1))
+                      fi
+                    fi
+                  done
+
+                  if [ $missing -eq 0 ]; then
+                    echo "✅ All documents follow progressive disclosure pattern" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "❌ $missing document(s) need progressive disclosure structure" >> $GITHUB_STEP_SUMMARY
+                  fi
+
+            - name: Generate validation report
+              if: always()
+              run: |
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "---" >> $GITHUB_STEP_SUMMARY
+                  echo "" >> $GITHUB_STEP_SUMMARY
+                  echo "**Validation completed for PR #${{ github.event.pull_request.number }}**" >> $GITHUB_STEP_SUMMARY

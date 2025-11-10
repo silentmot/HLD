@@ -1,17 +1,20 @@
-site_name: High-Level Design Documentation
-site_description: System Architecture and Technical Documentation
+site_name: SWMS High-Level Design
+site_description: Smart Waste Management System - Architecture and Technical Documentation
+site_url: https://example.com/
 
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
-    scheme: default
-    primary: indigo
-    accent: blue
+    - scheme: default
+      primary: indigo
+      accent: cyan
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - toc.integrate
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -20,33 +23,42 @@ docs_dir: docs
 
 nav:
   - Home: README.md
-  - HLD:
+  - High-Level Design:
       - Overview: hld/README.md
-      - Executive Summary: hld/01-executive-summary.md
-      - System Overview: hld/02-system-overview.md
-      - Business Requirements: hld/03-business-requirements.md
-      - Domain Model: hld/04-domain-model.md
-      - Architecture Overview: hld/05-architecture-overview.md
-      - Microservices Catalog: hld/06-microservices-catalog.md
-      - Data Architecture: hld/07-data-architecture.md
-      - Integration Architecture: hld/08-integration-architecture.md
-      - Hardware Specifications: hld/09-hardware-specifications.md
-      - Edge Computing Design: hld/10-edge-computing-design.md
-      - Security & Compliance: hld/11-security-compliance.md
-      - Operational Design: hld/12-operational-design.md
-      - Deployment & CI/CD: hld/13-deployment-cicd.md
-      - API Contracts: hld/14-api-contracts.md
-      - Event Streams: hld/15-event-streams.md
-      - Reporting & Analytics: hld/16-reporting-analytics.md
-      - Future Roadmap: hld/17-future-roadmap.md
-      - Glossary: hld/99-glossary.md
+      - 01 Executive Summary: hld/01-executive-summary.md
+      - 02 System Overview: hld/02-system-overview.md
+      - 03 Business Requirements: hld/03-business-requirements.md
+      - 04 Domain Model: hld/04-domain-model.md
+      - 05 Architecture Overview: hld/05-architecture-overview.md
+      - 06 Microservices Catalog: hld/06-microservices-catalog.md
+      - 07 Data Architecture: hld/07-data-architecture.md
+      - 08 Integration Architecture: hld/08-integration-architecture.md
+      - 09 Hardware Specifications: hld/09-hardware-specifications.md
+      - 10 Edge Computing Design: hld/10-edge-computing-design.md
+      - 11 Security & Compliance: hld/11-security-compliance.md
+      - 12 Operational Design: hld/12-operational-design.md
+      - 13 Deployment & CI/CD: hld/13-deployment-cicd.md
+      - 14 API Contracts: hld/14-api-contracts.md
+      - 15 Event Streams: hld/15-event-streams.md
+      - 16 Reporting & Analytics: hld/16-reporting-analytics.md
+      - 17 Future Roadmap: hld/17-future-roadmap.md
+      - 99 Glossary: hld/99-glossary.md
+  - API Reference:
+      - Trip Service: api/trip-service/openapi.yaml
+      - Device Service: api/device-service/openapi.yaml
+      - Vehicle Service: api/vehicle-service/openapi.yaml
+      - Contract Service: api/contract-service/openapi.yaml
+      - User Service: api/user-service/openapi.yaml
+      - Payment Service: api/payment-service/openapi.yaml
+      - Reports Service: api/reports-service/openapi.yaml
+      - Inventory Service: api/inventory-service/openapi.yaml
 
 plugins:
   - search
   - mermaid2
   - pdf-export:
       combined: true
-      combined_output_path: HLD-documentation.pdf
+      combined_output_path: SWMS-HLD-v1.0.pdf
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -55,12 +67,13 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          # format option removed to fix YAML error - defaults to built-in mermaid2 behavior
   - pymdownx.tabbed:
       alternate_style: true
   - admonition
   - pymdownx.details
   - tables
+  - attr_list
+  - md_in_html
   - toc:
       permalink: true
 

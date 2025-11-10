@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Device Service API
+  version: 1.0.0
+  description: Manages device drivers, polling, and health monitoring
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /devices/{id}/health:
+    get:
+      summary: Get device health status
+      description: Returns current health status of a device
+      tags:
+        - Devices
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Device health retrieved successfully
+        '404':
+          description: Device not found
+
+  /devices/events:
+    post:
+      summary: Post device event
+      description: Submits event from device (weight, LPR read, etc.)
+      tags:
+        - Devices
+      responses:
+        '201':
+          description: Event posted successfully
+
+components:
+  schemas:
+    Device:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [LPR, RFID, WEIGHBRIDGE, BARRIER, QR_SCANNER]
+        status:
+          type: string
+          enum: [ONLINE, OFFLINE, DEGRADED]

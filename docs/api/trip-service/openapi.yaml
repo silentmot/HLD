@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Trip Service API
+  version: 1.0.0
+  description: Orchestrates trip lifecycle from entry to completion
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /trips/initiate:
+    post:
+      summary: Initiate a new trip
+      description: Creates a new trip when vehicle enters main gate
+      tags:
+        - Trips
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                vehicleId:
+                  type: string
+                plateNumber:
+                  type: string
+                zoneId:
+                  type: string
+      responses:
+        '201':
+          description: Trip initiated successfully
+        '400':
+          description: Bad request
+
+  /trips/complete:
+    post:
+      summary: Complete a trip
+      description: Finalizes trip and calculates fees
+      tags:
+        - Trips
+      responses:
+        '200':
+          description: Trip completed successfully
+
+components:
+  schemas:
+    Trip:
+      type: object
+      properties:
+        id:
+          type: string
+        vehicleId:
+          type: string
+        status:
+          type: string
+          enum: [INITIATED, WEIGHED_IN, WEIGHED_OUT, COMPLETED]
