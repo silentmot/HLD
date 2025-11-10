@@ -1,0 +1,13 @@
+# Network Topology
+
+This is a placeholder for draw.io diagram.
+
+## Components
+- Device LAN (Segregated)
+- Application LAN (Segregated)
+- Management LAN (Segregated)
+- VLANs and Subnets (defer to LLD)
+- Firewalls
+- 802.1X Authentication
+- Edge Servers
+- Cloud Connectivity

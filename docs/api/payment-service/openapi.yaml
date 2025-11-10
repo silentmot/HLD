@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Payment Service API
+  version: 1.0.0
+  description: Handles fee calculation and billing
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /payments/calculate:
+    post:
+      summary: Calculate trip fees
+      description: Calculates fees based on pricing model and weight
+      tags:
+        - Payments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                tripId:
+                  type: string
+                contractId:
+                  type: string
+                weight:
+                  type: number
+      responses:
+        '200':
+          description: Fee calculated successfully
+        '400':
+          description: Bad request
+
+components:
+  schemas:
+    Payment:
+      type: object
+      properties:
+        id:
+          type: string
+        tripId:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [PENDING, PAID, FAILED]

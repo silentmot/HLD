@@ -1,0 +1,48 @@
+openapi: 3.0.3
+info:
+  title: Inventory Service API
+  version: 1.0.0
+  description: Manages waste inventory calculations (Separate Context)
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /inventory/sites/{siteId}:
+    get:
+      summary: Get site inventory
+      description: Returns calculated inventory for a site (Produced + Received - Dispatched)
+      tags:
+        - Inventory
+      parameters:
+        - name: siteId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Inventory retrieved successfully
+        '404':
+          description: Site not found
+
+components:
+  schemas:
+    Inventory:
+      type: object
+      properties:
+        siteId:
+          type: string
+        produced:
+          type: number
+          description: Waste produced at site
+        received:
+          type: number
+          description: Waste received from external sources
+        dispatched:
+          type: number
+          description: Waste dispatched/removed
+        balance:
+          type: number
+          description: Current inventory (Produced + Received - Dispatched)

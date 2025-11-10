@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Vehicle Service API
+  version: 1.0.0
+  description: Manages vehicle registry and identifiers
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /vehicles/{plate}:
+    get:
+      summary: Get vehicle by plate number
+      description: Retrieves vehicle information by license plate
+      tags:
+        - Vehicles
+      parameters:
+        - name: plate
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Vehicle found
+        '404':
+          description: Vehicle not found
+
+components:
+  schemas:
+    Vehicle:
+      type: object
+      properties:
+        id:
+          type: string
+        plateNumber:
+          type: string
+        rfidTag:
+          type: string
+        qrCode:
+          type: string
+        contractId:
+          type: string

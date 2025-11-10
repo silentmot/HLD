@@ -6,3 +6,9 @@ pymdown-extensions==10.7
 # PDF export plugin (requires GTK libraries - works in Linux/Docker, limited on Windows)
 # Disabled in mkdocs.yml by default - see PDF-GENERATION.md for alternatives
 mkdocs-pdf-export-plugin==0.5.10
+
+# OpenAPI validation
+openapi-spec-validator==0.7.1
+
+# Additional markdown extensions
+markdown==3.5.1

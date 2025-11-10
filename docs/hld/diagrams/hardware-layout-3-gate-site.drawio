@@ -1,0 +1,9 @@
+# Hardware Layout - 3 Gate Site
+
+This is a placeholder for draw.io diagram.
+
+## Components
+- 3 Main Entry Gates (MEG)
+- 2 Inbound Scales (SEN)
+- 2 Outbound Scales (SIT)
+- Associated devices per zone (LPR, RFID, Barrier, Weighbridge)

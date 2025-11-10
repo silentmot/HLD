@@ -1,0 +1,53 @@
+openapi: 3.0.3
+info:
+  title: Reports Service API
+  version: 1.0.0
+  description: Generates compliance and operational reports
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /reports/daily-summary:
+    get:
+      summary: Get daily trip summary
+      description: Returns summary of trips for a given date
+      tags:
+        - Reports
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Report generated successfully
+        '400':
+          description: Bad request
+
+  /reports/compliance:
+    get:
+      summary: Get compliance report
+      description: Generates report for government/regulatory submission
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: Report generated successfully
+
+components:
+  schemas:
+    Report:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [DAILY_SUMMARY, MONTHLY_BILLING, DEVICE_UPTIME, COMPLIANCE]
+        generatedAt:
+          type: string
+          format: date-time

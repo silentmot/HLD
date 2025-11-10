@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Contract Service API
+  version: 1.0.0
+  description: Manages contracts and authorization
+
+servers:
+  - url: https://api.swms.example.com
+    description: Production server
+
+paths:
+  /contracts/{id}:
+    get:
+      summary: Get contract details
+      description: Retrieves contract information
+      tags:
+        - Contracts
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Contract found
+        '404':
+          description: Contract not found
+
+components:
+  schemas:
+    Contract:
+      type: object
+      properties:
+        id:
+          type: string
+        clientId:
+          type: string
+        siteId:
+          type: string
+        pricingModel:
+          type: string
+          enum: [GATEPASS_ONLY, GATEPASS_PLUS_TON, FREE]
+        status:
+          type: string
+          enum: [ACTIVE, SUSPENDED, EXPIRED]
