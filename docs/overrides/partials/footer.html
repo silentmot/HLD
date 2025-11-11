@@ -1,16 +1,281 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-</head>
-<body>
-  <!-- OpenAI Documentation Assistant Integration -->
-  <script>
-    window.OpenAI = {
-      apiKey: 'OPENAI_API_KEY', // Replace with actual API key in production
-      assistant: {
-        id: 'asst_SWMS_HLD',
-        instructions: `You are a technical assistant for the SWMS (Smart Waste Management System) High-Level Design documentation.
+<!-- Enhanced footer that extends Material Design theme -->
+<div class="md-footer-meta md-typeset">
+  <div class="md-footer-meta__inner md-grid">
+
+    <!-- Main footer content -->
+    <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+
+        <!-- Technology Stack -->
+        <div class="swms-tech-stack">
+          <strong>Built with Modern Technologies</strong>
+          <div class="tech-badges">
+            <span class="tech-badge">
+              {% include ".icons/material/book.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+              MkDocs Material
+            </span>
+            <span class="tech-badge">
+              {% include ".icons/fontawesome/brands/github.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              GitHub
+            </span>
+            <span class="tech-badge">
+              {% include ".icons/simple/microsoftazure.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M5.537 21.006h7.726L18.82 3l-5.739 11.055-7.544-1.248z"/></svg>
+              Azure
+            </span>
+            <span class="tech-badge">
+              {% include ".icons/simple/kubernetes.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M12.013 0C10.612.02 9.264.27 8.013.724L12.013 12z"/></svg>
+              Kubernetes
+            </span>
+            <span class="tech-badge">
+              {% include ".icons/simple/docker.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185"/></svg>
+              Docker
+            </span>
+            <span class="tech-badge">
+              {% include ".icons/simple/dotnet.svg" ignore missing %}
+              <svg viewBox="0 0 24 24"><path d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396z"/></svg>
+              .NET
+            </span>
+          </div>
+        </div>
+
+        <!-- Documentation Status -->
+        <div class="swms-doc-status">
+          <span class="status-live">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z"/></svg>
+            Documentation Live
+          </span>
+          <span class="status-updated">
+            <svg viewBox="0 0 24 24"><path d="M12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22C6.47,22 2,17.5 2,12A10,10 0 0,1 12,2M12.5,7V12.25L17,14.92L16.25,16.15L11,13V7H12.5Z"/></svg>
+            Last Updated: November 2025
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="md-footer-copyright__highlight">
+        © 2025 SWMS Architecture Team • Licensed under MIT License
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <nav class="md-footer-nav swms-quick-links">
+      <div class="md-nav md-nav--primary">
+        <label class="md-nav__title" for="__drawer">
+          <svg viewBox="0 0 24 24"><path d="M3.9 12C3.9 10.29 5.29 8.9 7 8.9H11V7H7C4.24 7 2 9.24 2 12S4.24 17 7 17H11V15.1H7C5.29 15.1 3.9 13.71 3.9 12M8 13H16V11H8V13M17 7H13V8.9H17C18.71 8.9 20.1 10.29 20.1 12S18.71 15.1 17 15.1H13V17H17C19.76 17 22 14.76 22 12S19.76 7 17 7Z"/></svg>
+          Quick Access
+        </label>
+        <ul class="md-nav__list">
+          <li class="md-nav__item">
+            <a href="https://github.com/silentmot/HLD" class="md-nav__link" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+              Source Repository
+            </a>
+          </li>
+          <li class="md-nav__item">
+            <a href="/api/" class="md-nav__link">
+              <svg viewBox="0 0 24 24"><path d="M14.6 16.6L19.2 12L14.6 7.4L16 6L22 12L16 18L14.6 16.6M9.4 16.6L4.8 12L9.4 7.4L8 6L2 12L8 18L9.4 16.6Z"/></svg>
+              API Documentation
+            </a>
+          </li>
+          <li class="md-nav__item">
+            <a href="/hld/13-deployment-cicd/" class="md-nav__link">
+              <svg viewBox="0 0 24 24"><path d="M2.81 14.12L5.64 11.29L8.47 14.12L7.06 15.54L3.5 12L7.06 8.46L8.47 9.88L5.64 12.71L2.81 14.12M21.19 9.88L18.36 12.71L15.53 9.88L16.94 8.46L20.5 12L16.94 15.54L15.53 14.12L18.36 11.29L21.19 9.88M9.5 5.5L14.5 18.5H12.9L7.9 5.5H9.5Z"/></svg>
+              Deployment Guide
+            </a>
+          </li>
+          <li class="md-nav__item">
+            <a href="/hld/99-glossary/" class="md-nav__link">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3M19 19H5V5H19V19M17 17H7V15H17V17M17 13H7V11H17V13M17 9H7V7H17V9Z"/></svg>
+              Glossary
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+</div>
+
+<!-- Compact Footer Styles -->
+<style>
+/* Compact footer overrides */
+.md-footer-meta__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 !important;
+  max-width: none;
+}
+
+/* Technology stack styling */
+.swms-tech-stack {
+  margin-bottom: 0.75rem;
+}
+
+.swms-tech-stack strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tech-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tech-badge:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.tech-badge svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* Documentation status */
+.swms-doc-status {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.status-live,
+.status-updated {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-live {
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.status-updated {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-live svg,
+.status-updated svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+
+/* Quick links navigation */
+.swms-quick-links {
+  min-width: 200px;
+}
+
+.swms-quick-links .md-nav__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  color: inherit;
+}
+
+.swms-quick-links .md-nav__title svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.swms-quick-links .md-nav__list {
+  margin: 0;
+}
+
+.swms-quick-links .md-nav__item {
+  margin: 0.25rem 0;
+}
+
+.swms-quick-links .md-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.swms-quick-links .md-nav__link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.swms-quick-links .md-nav__link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Copyright styling */
+.md-footer-copyright__highlight {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 76.1875em) {
+  .md-footer-meta__inner {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .swms-quick-links {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .tech-badges {
+    justify-content: center;
+  }
+
+  .swms-doc-status {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+</style>
+
+<!-- OpenAI Documentation Assistant Integration -->
+<script>
+  window.OpenAI = {
+    apiKey: 'OPENAI_API_KEY', // Replace with actual API key in production
+    assistant: {
+      id: 'asst_SWMS_HLD',
+      instructions: `You are a technical assistant for the SWMS (Smart Waste Management System) High-Level Design documentation.
 
 CRITICAL RULES:
 1. Answer based ONLY on the documentation repository content
@@ -32,20 +297,18 @@ RESPONSE FORMAT:
 - Link to relevant diagrams when applicable
 - For API questions, reference the specific OpenAPI spec
 - Never use marketing language or simplification`,
-        model: 'gpt-4-turbo'
-      },
-      // Widget configuration
-      theme: {
-        primaryColor: '#3f51b5',
-        position: 'bottom-right',
-        openByDefault: false
-      },
-      placeholder: 'Ask about SWMS architecture, APIs, hardware specs...',
-      welcomeMessage: 'Hi! I can help you navigate the SWMS HLD documentation. Ask me about architecture, APIs, device integration, or any technical details.'
-    };
-  </script>
+      model: 'gpt-4-turbo'
+    },
+    // Widget configuration
+    theme: {
+      primaryColor: '#0f4c75',
+      position: 'bottom-right',
+      openByDefault: false
+    },
+    placeholder: 'Ask about SWMS architecture, APIs, hardware specs...',
+    welcomeMessage: 'Hi! I can help you navigate the SWMS HLD documentation. Ask me about architecture, APIs, device integration, or any technical details.'
+  };
+</script>
 
-  <!-- Load OpenAI Assistant SDK -->
-  <script src="https://cdn.openai.com/assistants/v1/embed.js" async defer></script>
-</body>
-</html>
+<!-- Load OpenAI Assistant SDK -->
+<script src="https://cdn.openai.com/assistants/v1/embed.js" async defer></script>

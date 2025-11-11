@@ -1,0 +1,341 @@
+/* SWMS Documentation Custom Styles */
+
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+	/* Custom color palette */
+	--md-primary-fg-color: #0f4c75;
+	--md-primary-fg-color--light: #3282b8;
+	--md-primary-fg-color--dark: #0b3954;
+	--md-accent-fg-color: #ff6b35;
+	--md-accent-fg-color--transparent: #ff6b3510;
+
+	/* Custom typography */
+	--md-text-font:
+		"Inter", -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+	--md-code-font: "JetBrains Mono", "Courier New", Courier, monospace;
+
+	/* Custom spacing */
+	--md-content-container-size: 1440px;
+}
+
+/* Enhanced header styling */
+.md-header {
+	background: linear-gradient(
+		135deg,
+		var(--md-primary-fg-color) 0%,
+		var(--md-primary-fg-color--light) 100%
+	);
+	box-shadow: 0 2px 8px rgba(15, 76, 117, 0.15);
+}
+
+.md-header__title {
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+/* Navigation improvements */
+.md-nav__item .md-nav__link {
+	border-radius: 4px;
+	transition: all 0.2s ease;
+}
+
+.md-nav__item .md-nav__link:hover {
+	background-color: var(--md-accent-fg-color--transparent);
+	transform: translateX(4px);
+}
+
+.md-nav__item .md-nav__link--active {
+	background-color: var(--md-accent-fg-color--transparent);
+	color: var(--md-accent-fg-color);
+	font-weight: 500;
+}
+
+/* Content area enhancements */
+.md-content {
+	max-width: var(--md-content-container-size);
+}
+
+.md-content__inner {
+	padding-top: 2rem;
+}
+
+/* Enhanced typography */
+.md-typeset h1 {
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	color: var(--md-primary-fg-color);
+	border-bottom: 2px solid var(--md-accent-fg-color);
+	padding-bottom: 0.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.md-typeset h2 {
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	color: var(--md-primary-fg-color--light);
+	margin-top: 2rem;
+}
+
+.md-typeset h3 {
+	font-weight: 500;
+	color: var(--md-primary-fg-color);
+}
+
+/* Code blocks */
+.md-typeset pre > code {
+	border-radius: 8px;
+	background: #1e1e1e;
+}
+
+.md-typeset .highlight {
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tables */
+.md-typeset table:not([class]) {
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border: none;
+}
+
+.md-typeset table:not([class]) th {
+	background: var(--md-primary-fg-color);
+	color: white;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.8rem;
+	letter-spacing: 0.5px;
+}
+
+.md-typeset table:not([class]) tr:hover {
+	background-color: var(--md-accent-fg-color--transparent);
+}
+
+/* Admonitions */
+.md-typeset .admonition {
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	border: none;
+	margin: 1.5rem 0;
+}
+
+.md-typeset .admonition-title {
+	font-weight: 600;
+	letter-spacing: -0.01em;
+}
+
+/* Custom admonition types */
+.md-typeset .admonition.architecture {
+	border-left: 4px solid #6366f1;
+}
+
+.md-typeset .admonition.architecture > .admonition-title {
+	background-color: rgba(99, 102, 241, 0.1);
+}
+
+.md-typeset .admonition.api {
+	border-left: 4px solid #10b981;
+}
+
+.md-typeset .admonition.api > .admonition-title {
+	background-color: rgba(16, 185, 129, 0.1);
+}
+
+.md-typeset .admonition.security {
+	border-left: 4px solid #f59e0b;
+}
+
+.md-typeset .admonition.security > .admonition-title {
+	background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* Badge styling */
+.md-typeset .badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.md-typeset .badge--primary {
+	background-color: var(--md-primary-fg-color);
+	color: white;
+}
+
+.md-typeset .badge--accent {
+	background-color: var(--md-accent-fg-color);
+	color: white;
+}
+
+.md-typeset .badge--success {
+	background-color: #10b981;
+	color: white;
+}
+
+.md-typeset .badge--warning {
+	background-color: #f59e0b;
+	color: white;
+}
+
+.md-typeset .badge--danger {
+	background-color: #ef4444;
+	color: white;
+}
+
+/* Status indicators */
+.status-indicator {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.25rem 0.75rem;
+	border-radius: 20px;
+	font-size: 0.875rem;
+	font-weight: 500;
+}
+
+.status-indicator--completed {
+	background-color: #dcfce7;
+	color: #166534;
+}
+
+.status-indicator--in-progress {
+	background-color: #dbeafe;
+	color: #1e40af;
+}
+
+.status-indicator--flagged {
+	background-color: #fef3c7;
+	color: #92400e;
+}
+
+.status-indicator--canceled {
+	background-color: #fee2e2;
+	color: #991b1b;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+	text-align: center;
+	margin: 2rem 0;
+}
+
+/* Footer improvements */
+.md-footer {
+	background: linear-gradient(
+		135deg,
+		var(--md-primary-fg-color--dark) 0%,
+		var(--md-primary-fg-color) 100%
+	);
+}
+
+/* Search improvements */
+.md-search__form {
+	border-radius: 8px;
+}
+
+.md-search__input {
+	border-radius: 8px;
+}
+
+/* TOC improvements */
+.md-nav--secondary .md-nav__link {
+	font-size: 0.8rem;
+}
+
+.md-nav--secondary .md-nav__link--active {
+	color: var(--md-accent-fg-color);
+	font-weight: 500;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] {
+	--md-primary-fg-color: #3282b8;
+	--md-primary-fg-color--light: #5ca3d1;
+	--md-primary-fg-color--dark: #0f4c75;
+}
+
+/* Print styles */
+@media print {
+	.md-header,
+	.md-footer,
+	.md-nav,
+	.md-sidebar {
+		display: none !important;
+	}
+
+	.md-content {
+		max-width: 100% !important;
+		margin: 0 !important;
+	}
+}
+
+/* Responsive improvements */
+@media screen and (max-width: 76.1875em) {
+	.md-nav__item .md-nav__link:hover {
+		transform: none;
+	}
+}
+
+/* Icon styling */
+.twemoji {
+	vertical-align: text-top;
+}
+
+/* Custom utility classes */
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.mt-1 {
+	margin-top: 0.5rem;
+}
+.mt-2 {
+	margin-top: 1rem;
+}
+.mt-3 {
+	margin-top: 1.5rem;
+}
+.mt-4 {
+	margin-top: 2rem;
+}
+
+.mb-1 {
+	margin-bottom: 0.5rem;
+}
+.mb-2 {
+	margin-bottom: 1rem;
+}
+.mb-3 {
+	margin-bottom: 1.5rem;
+}
+.mb-4 {
+	margin-bottom: 2rem;
+}
+
+/* Loading animation */
+.loading {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 3px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	border-top-color: var(--md-accent-fg-color);
+	animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

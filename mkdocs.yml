@@ -1,48 +1,100 @@
 site_name: SWMS High-Level Design
 site_description: Smart Waste Management System - Architecture and Technical Documentation
 site_url: https://example.com/
+site_author: SWMS Architecture Team
+
+# Repository
+repo_name: silentmot/HLD
+repo_url: https://github.com/silentmot/HLD
+edit_uri: edit/main/docs/
 
 theme:
   name: material
   custom_dir: docs/overrides
+  logo: assets/logo.svg
+  favicon: assets/favicon.ico
   palette:
-    - scheme: default
-      primary: indigo
-      accent: cyan
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.path
+    - navigation.indexes
     - toc.integrate
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+    - header.autohide
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+    tag:
+      default: fontawesome/solid/tag
+    admonition:
+      note: fontawesome/solid/sticky-note
+      abstract: fontawesome/solid/book
+      info: fontawesome/solid/circle-info
+      tip: fontawesome/solid/bullhorn
+      success: fontawesome/solid/check
+      question: fontawesome/solid/circle-question
+      warning: fontawesome/solid/triangle-exclamation
+      failure: fontawesome/solid/bomb
+      danger: fontawesome/solid/skull
+      bug: fontawesome/solid/robot
+      example: fontawesome/solid/flask
+      quote: fontawesome/solid/quote-left
 
 docs_dir: docs
 
 nav:
-  - Home: README.md
+  - Home:
+    - README.md
   - High-Level Design:
       - Overview: hld/README.md
-      - 01 Executive Summary: hld/01-executive-summary.md
-      - 02 System Overview: hld/02-system-overview.md
-      - 03 Business Requirements: hld/03-business-requirements.md
-      - 04 Domain Model: hld/04-domain-model.md
-      - 05 Architecture Overview: hld/05-architecture-overview.md
-      - 06 Microservices Catalog: hld/06-microservices-catalog.md
-      - 07 Data Architecture: hld/07-data-architecture.md
-      - 08 Integration Architecture: hld/08-integration-architecture.md
-      - 09 Hardware Specifications: hld/09-hardware-specifications.md
-      - 10 Edge Computing Design: hld/10-edge-computing-design.md
-      - 11 Security & Compliance: hld/11-security-compliance.md
-      - 12 Operational Design: hld/12-operational-design.md
-      - 13 Deployment & CI/CD: hld/13-deployment-cicd.md
-      - 14 API Contracts: hld/14-api-contracts.md
-      - 15 Event Streams: hld/15-event-streams.md
-      - 16 Reporting & Analytics: hld/16-reporting-analytics.md
-      - 17 Future Roadmap: hld/17-future-roadmap.md
-      - 99 Glossary: hld/99-glossary.md
+      - Executive Summary: hld/01-executive-summary.md
+      - System Overview: hld/02-system-overview.md
+      - Business Requirements: hld/03-business-requirements.md
+      - Domain Model: hld/04-domain-model.md
+      - Architecture Overview: hld/05-architecture-overview.md
+      - Microservices Catalog: hld/06-microservices-catalog.md
+      - Data Architecture: hld/07-data-architecture.md
+      - Integration Architecture: hld/08-integration-architecture.md
+      - Hardware Specifications: hld/09-hardware-specifications.md
+      - Edge Computing Design: hld/10-edge-computing-design.md
+      - Security & Compliance: hld/11-security-compliance.md
+      - Operational Design: hld/12-operational-design.md
+      - Deployment & CI/CD: hld/13-deployment-cicd.md
+      - API Contracts: hld/14-api-contracts.md
+      - Event Streams: hld/15-event-streams.md
+      - Reporting & Analytics: hld/16-reporting-analytics.md
+      - Future Roadmap: hld/17-future-roadmap.md
+      - Glossary: hld/99-glossary.md
   - API Reference:
       - Trip Service: api/trip-service/openapi.yaml
       - Device Service: api/device-service/openapi.yaml
@@ -54,28 +106,105 @@ nav:
       - Inventory Service: api/inventory-service/openapi.yaml
 
 plugins:
-  - search
-  - mermaid2
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
   - pdf-export:
+      verbose: true
+      media_type: print
+      enabled_if_env: ENABLE_PDF_EXPORT
       combined: true
-      combined_output_path: SWMS-HLD-v1.0.pdf
+      combined_output_path: SWMS-HLD-Complete.pdf
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+  - minify:
+      minify_html: true
+      minify_js: true
+      minify_css: true
 
 markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+      title: On this page
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: silentmot
+      repo: HLD
+  - pymdownx.mark
+  - pymdownx.smartsymbols
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
   - pymdownx.tabbed:
       alternate_style: true
-  - admonition
-  - pymdownx.details
-  - tables
-  - attr_list
-  - md_in_html
-  - toc:
-      permalink: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
 
 extra:
   generator: false
+  homepage: https://example.com
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/silentmot/HLD
+      name: GitHub Repository
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/r/swms/
+      name: Docker Hub
+    - icon: simple/kubernetes
+      link: https://kubernetes.io/
+      name: Kubernetes Deployment
+    - icon: simple/microsoftazure
+      link: https://azure.microsoft.com/
+      name: Azure Cloud Platform
+  version:
+    provider: mike
+    default: latest
+  tags:
+    Architecture: architecture
+    API: api
+    Security: security
+    Hardware: hardware
+    Integration: integration
+    Deployment: deployment
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+  - javascripts/mermaid.js
