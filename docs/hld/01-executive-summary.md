@@ -23,7 +23,7 @@ The Kingdom of Saudi Arabia is experiencing unprecedented construction and urban
 **SWMS** is an enterprise-grade platform that fully automates recycling facility operations through intelligent device integration, real-time trip orchestration, and data-driven compliance reporting. The system eliminates manual processes, reduces operational costs, and provides unprecedented visibility into waste diversion metrics critical for environmental impact reporting and regulatory submissions.
 
 <details>
-<summary><b>📋 Strategic Context Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Strategic Context Deep Dive (Click to Expand)</b></summary>
 
 ### Market Opportunity
 
@@ -114,7 +114,7 @@ SWMS is a **hybrid distributed platform** combining cloud microservices, on-prem
 6. **Edge Resilience**: On-site edge servers maintain operations during network outages, with automatic synchronization upon reconnection
 
 <details>
-<summary><b>📋 Technical Capabilities Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Capabilities Deep Dive (Click to Expand)</b></summary>
 
 ### Functional Capability Matrix
 
@@ -186,7 +186,7 @@ SWMS delivers measurable financial and operational returns within 12-18 months o
 - **Total Annual OpEx**: $99,000 - $119,000
 
 <details>
-<summary><b>📋 ROI Analysis & KPIs Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: ROI Analysis & KPIs Deep Dive (Click to Expand)</b></summary>
 
 ### Financial Returns
 
@@ -309,7 +309,7 @@ SWMS is architected to meet stringent regulatory requirements for waste manageme
 5. **Encryption Standards**: TLS 1.3 for data in transit, AES-256 for data at rest, secure key management via cloud-native KMS
 
 <details>
-<summary><b>📋 Compliance Requirements Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Compliance Requirements Deep Dive (Click to Expand)</b></summary>
 
 ### Regulatory Obligations
 

@@ -9,7 +9,7 @@ The Smart Waste Management System (SWMS) vision is to establish a world-class, t
 **Mission**: Deliver a robust, scalable, and user-friendly platform that empowers waste management stakeholders with accurate real-time data, automated workflows, and actionable insights to optimize resource utilization, reduce environmental impact, and maintain the highest standards of transparency and accountability.
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ### Strategic Pillars
 
@@ -82,7 +82,7 @@ SWMS encompasses the complete automation of waste management site operations, fr
 - Payroll and HR management systems
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ### Detailed Scope Definition
 
@@ -181,7 +181,7 @@ SWMS serves a diverse ecosystem of stakeholders with distinct needs, access leve
 - **IT Operations**: System health monitoring, incident response, infrastructure management
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ### Detailed Stakeholder Analysis
 
@@ -244,7 +244,7 @@ SWMS is architected to handle **10+ simultaneous vehicle trips per site** with i
 - **Idempotency**: Duplicate events (e.g., repeated RFID reads) do not create duplicate trips
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ### Concurrent Trip Architecture
 
@@ -390,7 +390,7 @@ SWMS operates under technical, business, and regulatory constraints that shape a
 - **Environmental Reporting**: Mandatory integration with KSA government waste tracking portals
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ### Constraint Impact Analysis
 

@@ -52,29 +52,30 @@ theme:
     repo: fontawesome/brands/github
     edit: material/pencil
     view: material/eye
-    previous: fontawesome/solid/angle-left
-    next: fontawesome/solid/angle-right
+    previous: material/arrow-left
+    next: material/arrow-right
     tag:
-      default: fontawesome/solid/tag
+      default: material/tag
     admonition:
-      note: fontawesome/solid/sticky-note
-      abstract: fontawesome/solid/book
-      info: fontawesome/solid/circle-info
-      tip: fontawesome/solid/bullhorn
-      success: fontawesome/solid/check
-      question: fontawesome/solid/circle-question
-      warning: fontawesome/solid/triangle-exclamation
-      failure: fontawesome/solid/bomb
-      danger: fontawesome/solid/skull
-      bug: fontawesome/solid/robot
-      example: fontawesome/solid/flask
-      quote: fontawesome/solid/quote-left
+      note: material/note-text
+      abstract: material/book-open-variant
+      info: material/information
+      tip: material/lightbulb
+      success: material/check-circle
+      question: material/help-circle
+      warning: material/alert
+      failure: material/close-circle
+      danger: material/alert-octagon
+      bug: material/bug
+      example: material/test-tube
+      quote: material/format-quote-close
 
 docs_dir: docs
 
 nav:
   - Home:
     - README.md
+  - Tags: tags.md
   - High-Level Design:
       - Overview: hld/README.md
       - Executive Summary: hld/01-executive-summary.md
@@ -109,12 +110,25 @@ plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
 
+  - awesome-pages
+
+  - tags:
+      tags_file: tags.md
+
+  - mermaid2:
+      version: 10.6.1
+      arguments:
+        theme: |
+          ^(JSON.parse(__md_get("__palette").index == 1)) ? 'dark' : 'light'
+        securityLevel: 'loose'
+
   - pdf-export:
       verbose: true
       media_type: print
       enabled_if_env: ENABLE_PDF_EXPORT
       combined: true
       combined_output_path: SWMS-HLD-Complete.pdf
+
   - glightbox:
       touchNavigation: true
       loop: false
@@ -124,9 +138,12 @@ plugins:
       height: auto
       zoomable: true
       draggable: true
+
   - git-revision-date-localized:
       enable_creation_date: true
       type: timeago
+      fallback_to_build_date: true
+
   - minify:
       minify_html: true
       minify_js: true
@@ -149,7 +166,9 @@ markdown_extensions:
       smart_enable: all
   - pymdownx.caret
   - pymdownx.details
-  - pymdownx.emoji
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
@@ -167,6 +186,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.tasklist:
@@ -202,9 +222,9 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+  - https://fonts.googleapis.com/icon?family=Material+Icons
 
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
   - javascripts/mermaid.js

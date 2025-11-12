@@ -1,0 +1,153 @@
+/* SWMS HLD Custom Styles */
+/* Source: GZANSP Protocol - Single Source of Truth for styles */
+
+/* Badge color classes for Material Icons circles */
+.md-typeset .material-icons.blue,
+.md-typeset :is(.admonition,details) .blue > .material-icons {
+    color: #2196F3;
+}
+
+.md-typeset .material-icons.green,
+.md-typeset :is(.admonition,details) .green > .material-icons {
+    color: #4CAF50;
+}
+
+.md-typeset .material-icons.yellow,
+.md-typeset :is(.admonition,details) .yellow > .material-icons {
+    color: #FFC107;
+}
+
+.md-typeset .material-icons.red,
+.md-typeset :is(.admonition,details) .red > .material-icons {
+    color: #F44336;
+}
+
+.md-typeset .material-icons.purple,
+.md-typeset :is(.admonition,details) .purple > .material-icons {
+    color: #9C27B0;
+}
+
+/* Mermaid zoom wrapper styles */
+.mermaid-zoom-wrapper {
+    position: relative;
+    margin: 1em 0;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 4px;
+    background-color: var(--md-code-bg-color);
+    overflow: hidden;
+}
+
+.mermaid-controls button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background: rgba(var(--md-default-bg-color--rgb), 0.95);
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s, border-color 0.2s;
+    color: var(--md-default-fg-color);
+}
+
+.mermaid-controls button:hover {
+    background: var(--md-accent-fg-color--transparent);
+    border-color: var(--md-accent-fg-color);
+}
+
+.mermaid-controls .material-icons {
+    font-size: 18px;
+}
+
+/* Material Icons inline styles */
+.md-typeset .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.2em;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure icons work in lists */
+.md-typeset li .material-icons {
+    margin-right: 0.2em;
+}
+
+/* Icon color utilities */
+.md-typeset .icon-success {
+    color: var(--md-typeset-color-success);
+}
+
+.md-typeset .icon-warning {
+    color: var(--md-typeset-color-warning);
+}
+
+.md-typeset .icon-error {
+    color: var(--md-typeset-color-error);
+}
+
+.md-typeset .icon-info {
+    color: var(--md-typeset-color-info);
+}
+
+/* Status badge styling */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.status-badge.blue {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+.status-badge.green {
+    background-color: rgba(76, 175, 80, 0.1);
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-badge.yellow {
+    background-color: rgba(255, 193, 7, 0.1);
+    color: #FFC107;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.status-badge.red {
+    background-color: rgba(244, 67, 54, 0.1);
+    color: #F44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.status-badge.purple {
+    background-color: rgba(156, 39, 176, 0.1);
+    color: #9C27B0;
+    border: 1px solid rgba(156, 39, 176, 0.3);
+}
+
+/* Responsive diagram controls */
+@media screen and (max-width: 768px) {
+    .mermaid-controls {
+        flex-direction: column;
+        gap: 3px !important;
+    }
+
+    .mermaid-controls button {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}

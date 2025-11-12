@@ -2,11 +2,11 @@
 
 Documentation repository for system architecture and technical specifications.
 
-## ✅ Setup Complete - Ready to Use
+## :material-check-circle: Setup Complete - Ready to Use
 
 **PDF export enabled with GTK libraries configured.**
 
-👉 **[START HERE - Quick Start Guide](START-HERE.md)** 👈
+:material-arrow-right: **[START HERE - Quick Start Guide](START-HERE.md)** :material-arrow-left:
 
 ---
 

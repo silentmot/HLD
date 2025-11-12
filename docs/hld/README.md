@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Quick Navigation
+## :material-clipboard-text: Quick Navigation
 
 ### Core Architecture
 
@@ -49,7 +49,7 @@
 
 ---
 
-## 🎯 Document Purpose
+## :material-target: Document Purpose
 
 This High-Level Design (HLD) document serves as the **authoritative architectural blueprint** for the Smart Waste Management System (SWMS). It is designed for:
 
@@ -60,7 +60,7 @@ This High-Level Design (HLD) document serves as the **authoritative architectura
 
 ---
 
-## 📊 System at a Glance
+## :material-chart-box: System at a Glance
 
 | Aspect | Description |
 |--------|-------------|
@@ -76,7 +76,7 @@ This High-Level Design (HLD) document serves as the **authoritative architectura
 
 ---
 
-## 🏗️ Documentation Structure
+## :material-office-building: Documentation Structure
 
 ### Progressive Disclosure Pattern
 
@@ -89,7 +89,7 @@ Each section follows a **two-tier structure**:
 [2-3 paragraph overview for executives/regulators]
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 [Comprehensive technical content with diagrams, tables, code samples]
 - Sub-section A
@@ -102,15 +102,15 @@ Each section follows a **two-tier structure**:
 
 **Benefits**:
 
-- ✅ Executives read summaries, skip technical details
-- ✅ Developers expand all sections for full context
-- ✅ Single document - no separate exec/technical versions
-- ✅ GitHub Pages renders collapsible sections natively
-- ✅ PDF export shows all content expanded
+- :material-check-circle: Executives read summaries, skip technical details
+- :material-check-circle: Developers expand all sections for full context
+- :material-check-circle: Single document - no separate exec/technical versions
+- :material-check-circle: GitHub Pages renders collapsible sections natively
+- :material-check-circle: PDF export shows all content expanded
 
 ---
 
-## 📐 Page Allocation
+## :material-ruler-square: Page Allocation
 
 | Section | Pages | Priority | Focus |
 |---------|-------|----------|-------|
@@ -136,7 +136,7 @@ Each section follows a **two-tier structure**:
 
 ---
 
-## 🔗 Related Resources
+## :material-link-variant: Related Resources
 
 - **API Documentation Portal**: [Redocly Portal](../api/) - Interactive OpenAPI specs
 - **Diagrams**: [Diagram Sources](../diagrams/) - Mermaid & draw.io files
@@ -145,15 +145,15 @@ Each section follows a **two-tier structure**:
 
 ---
 
-## 📝 Document Conventions
+## :material-file-document-edit: Document Conventions
 
 ### Terminology
 
 - **MUST/SHALL**: Mandatory requirement
 - **SHOULD**: Strong recommendation
 - **MAY/CAN**: Optional
-- **⚡ NEW**: Content added in latest revision
-- **⬆️**: Expanded section
+- **:material-new-box: NEW**: Content added in latest revision
+- **:material-arrow-expand-up: EXPANDED**: Expanded section
 
 ### Diagrams
 
@@ -169,7 +169,7 @@ Each section follows a **two-tier structure**:
 
 ---
 
-## 🤝 Contributing
+## :material-handshake: Contributing
 
 ### Review Process
 
@@ -191,7 +191,7 @@ Each section follows a **two-tier structure**:
 
 ---
 
-## 📧 Contacts
+## :material-email: Contacts
 
 - **Architecture Team**: <architects@swms.example.com>
 - **Domain Experts**: <domain-experts@swms.example.com>

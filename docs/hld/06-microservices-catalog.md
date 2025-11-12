@@ -5,7 +5,7 @@
 [2-3 paragraph overview for executives/regulators]
 
 <details>
-<summary><b>📋 Technical Deep Dive (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Technical Deep Dive (Click to Expand)</b></summary>
 
 ## Service Inventory
 

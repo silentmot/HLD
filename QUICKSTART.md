@@ -1,4 +1,4 @@
-# 🚀 Quick Start Guide - Documentation Tooling
+# :material-rocket-launch: Quick Start Guide - Documentation Tooling
 
 ## Prerequisites
 
@@ -6,7 +6,7 @@
 - Node.js 18+
 - Git
 
-## 1️⃣ Initial Setup (5 minutes)
+## :material-numeric-1-circle: Initial Setup (5 minutes)
 
 ```bash
 # Clone repository
@@ -23,7 +23,7 @@ mkdocs --version
 redocly --version
 ```
 
-## 2️⃣ Configure OpenAI Assistant (2 minutes)
+## :material-numeric-2-circle: Configure OpenAI Assistant (2 minutes)
 
 Edit `docs/overrides/partials/footer.html`:
 
@@ -31,13 +31,13 @@ Edit `docs/overrides/partials/footer.html`:
 apiKey: 'YOUR_ACTUAL_OPENAI_API_KEY',  // Replace this line
 ```
 
-## 3️⃣ Enable GitHub Pages (1 minute)
+## :material-numeric-3-circle: Enable GitHub Pages (1 minute)
 
 1. Go to Repository Settings → Pages
 2. Source: "GitHub Actions"
 3. Save
 
-## 4️⃣ Update Team Names (2 minutes)
+## :material-numeric-4-circle: Update Team Names (2 minutes)
 
 Edit `.github/CODEOWNERS` and replace placeholder teams:
 
@@ -47,7 +47,7 @@ Edit `.github/CODEOWNERS` and replace placeholder teams:
 # etc.
 ```
 
-## 5️⃣ Test Locally (2 minutes)
+## :material-numeric-5-circle: Test Locally (2 minutes)
 
 ```bash
 # Start local server
@@ -59,7 +59,7 @@ mkdocs serve
 redocly lint
 ```
 
-## 6️⃣ Make Your First Change (5 minutes)
+## :material-numeric-6-circle: Make Your First Change (5 minutes)
 
 1. Create a branch:
 
@@ -86,7 +86,7 @@ redocly lint
 
 5. Create PR - automated checks will run!
 
-## 7️⃣ Deploy to Production (automatic)
+## :material-numeric-7-circle: Deploy to Production (automatic)
 
 Once PR is approved and merged to `main`:
 
@@ -94,7 +94,7 @@ Once PR is approved and merged to `main`:
 - Documentation live at: `https://silentmot.github.io/HLD/`
 - Check deployment status in Actions tab
 
-## ✅ Verification Checklist
+## :material-check-circle: Verification Checklist
 
 After setup, verify:
 
@@ -105,7 +105,7 @@ After setup, verify:
 - [ ] CODEOWNERS teams are correct
 - [ ] First PR creates automated checks
 
-## 🆘 Troubleshooting
+## :material-help-circle: Troubleshooting
 
 ### MkDocs fails to start
 
@@ -131,13 +131,13 @@ npm install -g @redocly/cli
 - Verify API key is set correctly
 - Ensure `custom_dir` is set in `mkdocs.yml`
 
-## 📚 Next Steps
+## :material-book-multiple: Next Steps
 
 - Read `TOOLING-SETUP.md` for detailed documentation
 - Review `IMPLEMENTATION-SUMMARY.md` for what was implemented
 - Check `.github/PULL_REQUEST_TEMPLATE.md` for PR guidelines
 - See `updates.md` for GZANSP protocol rules
 
-## 🎯 Total Setup Time: ~20 minutes
+## :material-target: Total Setup Time: ~20 minutes
 
-You're ready to start contributing to the documentation! 🎉
+You're ready to start contributing to the documentation! :material-party-popper:

@@ -26,7 +26,7 @@ This document defines the functional and operational requirements for the Smart 
 ### 1.1 Core Business Flows
 
 <details>
-<summary><b>📋 Primary Business Processes (Click to Expand)</b></summary>
+<summary><b>:material-clipboard-text: Primary Business Processes (Click to Expand)</b></summary>
 
 #### Process 1: Contract Creation & Management
 
@@ -173,17 +173,17 @@ Option 2: Bulk Upload (CSV)
 
 **Success Criteria**:
 
-- ✅ Vehicle registered within 1 minute
-- ✅ Plate format validated automatically
-- ✅ QR code generated and downloadable immediately (for standard contracts)
-- ✅ Vehicle available for trips immediately after registration (standard contracts)
+- :material-check-circle: Vehicle registered within 1 minute
+- :material-check-circle: Plate format validated automatically
+- :material-check-circle: QR code generated and downloadable immediately (for standard contracts)
+- :material-check-circle: Vehicle available for trips immediately after registration (standard contracts)
 
 **Exception Handling**:
 
-- ❌ Duplicate plate number → Error: "Vehicle with plate ABC-1234 already registered"
-- ❌ Invalid plate format → Error: "Invalid format. Use: 1234-ABC (1-4 digits, dash, 3 letters)"
-- ❌ Contract expired → Error: "Cannot register vehicles under expired contract"
-- ❌ Vehicle limit exceeded → Error: "Contract allows maximum 10 vehicles. Upgrade contract or delete unused vehicles."
+- :material-close-circle: Duplicate plate number → Error: "Vehicle with plate ABC-1234 already registered"
+- :material-close-circle: Invalid plate format → Error: "Invalid format. Use: 1234-ABC (1-4 digits, dash, 3 letters)"
+- :material-close-circle: Contract expired → Error: "Cannot register vehicles under expired contract"
+- :material-close-circle: Vehicle limit exceeded → Error: "Contract allows maximum 10 vehicles. Upgrade contract or delete unused vehicles."
 
 ---
 
@@ -207,7 +207,7 @@ Option 2: Bulk Upload (CSV)
    - Sets trip status: INITIATED
    - Records entry time and entry zone (e.g., MEG_1)
    - Links trip to vehicle and contract
-   - Assigns badge color: 🔵 BLUE (ongoing/in-process)
+   - Assigns badge color: :material-circle:{.blue} BLUE (ongoing/in-process)
 5. System sends barrier open command
 6. Barrier opens (~3 seconds), vehicle enters facility
 
@@ -226,7 +226,7 @@ Option 2: Bulk Upload (CSV)
    - Validates weight > 0
    - Records entry_weight, entry_weight_time, entry_weight_zone
    - Updates trip status: WEIGHED_IN
-   - Badge remains 🔵 BLUE (ongoing)
+   - Badge remains :material-circle:{.blue} BLUE (ongoing)
 8. Vehicle proceeds to disposal area
 
 **Stage 3: Disposal Operations (Variable Duration)**
@@ -257,27 +257,27 @@ Option 2: Bulk Upload (CSV)
    - Updates trip status: COMPLETED
    - Records completion time
    - Generates invoice with disposal fees
-   - Assigns badge color: 🟢 GREEN (completed successfully)
+   - Assigns badge color: :material-circle:{.green} GREEN (completed successfully)
 8. System sends barrier open command
 9. Vehicle exits facility
 
 **Success Criteria**:
 
-- ✅ Trip progresses: INITIATED → WEIGHED_IN → WEIGHED_OUT → COMPLETED
-- ✅ Entry and exit weights captured automatically
-- ✅ Net weight calculated correctly (entry - exit)
-- ✅ Disposal fees applied according to site pricing model
-- ✅ Total processing time: 24-30 seconds
+- :material-check-circle: Trip progresses: INITIATED → WEIGHED_IN → WEIGHED_OUT → COMPLETED
+- :material-check-circle: Entry and exit weights captured automatically
+- :material-check-circle: Net weight calculated correctly (entry - exit)
+- :material-check-circle: Disposal fees applied according to site pricing model
+- :material-check-circle: Total processing time: 24-30 seconds
 
 **Exception Handling**:
 
-- ❌ Vehicle not registered → Reject at main gate, barrier closed, error displayed
-- ❌ Contract expired → Reject at main gate, notify customer to renew
-- ❌ Existing active trip → Reject at main gate, display "Vehicle has active trip"
-- ❌ LPR fails to capture plate → **System flags trip automatically** (🟡 YELLOW badge)
-- ❌ Weight capture fails → **System flags trip automatically** (🟡 YELLOW badge)
-- ❌ Negative net weight → **System flags trip automatically** (🟡 YELLOW badge)
-- ❌ QR code used as identifier → **System flags trip instantly** (🟡 YELLOW badge)
+- :material-close-circle: Vehicle not registered → Reject at main gate, barrier closed, error displayed
+- :material-close-circle: Contract expired → Reject at main gate, notify customer to renew
+- :material-close-circle: Existing active trip → Reject at main gate, display "Vehicle has active trip"
+- :material-close-circle: LPR fails to capture plate → **System flags trip automatically** (:material-circle:{.yellow} YELLOW badge)
+- :material-close-circle: Weight capture fails → **System flags trip automatically** (:material-circle:{.yellow} YELLOW badge)
+- :material-close-circle: Negative net weight → **System flags trip automatically** (:material-circle:{.yellow} YELLOW badge)
+- :material-close-circle: QR code used as identifier → **System flags trip instantly** (:material-circle:{.yellow} YELLOW badge)
 
 ---
 
@@ -335,7 +335,7 @@ Option 2: Bulk Upload (CSV)
    - Trip type: MATERIAL_SALES (not DISPOSAL)
    - Trip status: INITIATED
    - Links trip to order, vehicle, contract
-   - Assigns badge color: 🟣 PURPLE (material sales trip)
+   - Assigns badge color: :material-circle:{.purple} PURPLE (material sales trip)
 5. Barrier opens, vehicle enters
 
 **Entrance Scale (7-9 seconds)**:
@@ -345,7 +345,7 @@ Option 2: Bulk Upload (CSV)
 3. System correlates trip (status INITIATED, type MATERIAL_SALES)
 4. System captures entry weight: **TARE weight** (empty vehicle before loading)
 5. Trip status: WEIGHED_IN
-6. Badge remains 🟣 PURPLE
+6. Badge remains :material-circle:{.purple} PURPLE
 
 **Loading Area (Variable Duration)**:
 
@@ -379,7 +379,7 @@ Option 2: Bulk Upload (CSV)
    - Generates invoice for material purchase (separate from disposal invoices)
    - Updates inventory: Dispatched += material_weight
    - Updates order status: COMPLETED
-   - Badge remains 🟣 PURPLE (completed sales trip)
+   - Badge remains :material-circle:{.purple} PURPLE (completed sales trip)
 9. Barrier opens, vehicle exits
 
 **Inventory Calculation**:
@@ -401,12 +401,12 @@ Where:
 
 **Success Criteria**:
 
-- ✅ Order placed online with ORDER ID + RECEIPT
-- ✅ Vehicle processes through same trip flow (entry → entrance scale → loading → exit scale)
-- ✅ Material weight calculated: exit_weight - entry_weight
-- ✅ Invoice based on actual weight × price per ton
-- ✅ Inventory automatically updated (Dispatched += material_weight)
-- ✅ Trip badge 🟣 PURPLE distinguishes from disposal trips
+- :material-check-circle: Order placed online with ORDER ID + RECEIPT
+- :material-check-circle: Vehicle processes through same trip flow (entry → entrance scale → loading → exit scale)
+- :material-check-circle: Material weight calculated: exit_weight - entry_weight
+- :material-check-circle: Invoice based on actual weight × price per ton
+- :material-check-circle: Inventory automatically updated (Dispatched += material_weight)
+- :material-check-circle: Trip badge :material-circle:{.purple} PURPLE distinguishes from disposal trips
 
 ---
 
@@ -418,17 +418,17 @@ Where:
 
 **Automatic Flagging Conditions**:
 
-1. ❌ **LPR fails to capture plate number** → Trip flagged instantly
-2. ❌ **Weight capture fails** (scale timeout, no stabilization) → Trip flagged instantly
-3. ❌ **QR code used as identifier** (instead of LPR/RFID) → Trip flagged instantly
-4. ❌ **Negative net weight** (exit_weight > entry_weight for disposal) → Trip flagged instantly
-5. ❌ **Weight mismatch** (material sales: actual weight differs significantly from order) → Trip flagged
+1. :material-close-circle: **LPR fails to capture plate number** → Trip flagged instantly
+2. :material-close-circle: **Weight capture fails** (scale timeout, no stabilization) → Trip flagged instantly
+3. :material-close-circle: **QR code used as identifier** (instead of LPR/RFID) → Trip flagged instantly
+4. :material-close-circle: **Negative net weight** (exit_weight > entry_weight for disposal) → Trip flagged instantly
+5. :material-close-circle: **Weight mismatch** (material sales: actual weight differs significantly from order) → Trip flagged
 
 **Flagged Trip Workflow**:
 
 1. System detects issue during trip processing
 2. System automatically sets trip status: FLAGGED
-3. System assigns badge color: 🟡 YELLOW (flagged trip)
+3. System assigns badge color: :material-circle:{.yellow} YELLOW (flagged trip)
 4. System logs flag reason (e.g., "LPR capture failed at SEN-1", "Negative net weight detected")
 5. System sends alert to ADMIN dashboard notification panel
 6. Trip appears in "Flagged Trips" queue with details:
@@ -443,9 +443,9 @@ Where:
 
 **Important**:
 
-- ❌ Flagged trips CANNOT be edited or modified
-- ❌ Weights CANNOT be manually entered or corrected
-- ✅ ONLY action available: **CANCEL**
+- :material-close-circle: Flagged trips CANNOT be edited or modified
+- :material-close-circle: Weights CANNOT be manually entered or corrected
+- :material-check-circle: ONLY action available: **CANCEL**
 
 1. ADMIN reviews flagged trip details
 2. ADMIN verifies flag reason is valid
@@ -455,7 +455,7 @@ Where:
 6. ADMIN confirms cancellation
 7. System updates trip:
    - Trip status: CANCELED
-   - Badge color: 🔴 RED (canceled)
+   - Badge color: :material-circle:{.red} RED (canceled)
    - Records cancellation timestamp, admin user ID, cancellation reason
 8. **Trip remains in database permanently** (not deleted)
 9. Trip appears in reports/history as "Flagged and Canceled"
@@ -469,11 +469,11 @@ Where:
 
 **Success Criteria**:
 
-- ✅ System auto-flags trips based on predefined conditions
-- ✅ Flagged trips clearly marked with 🟡 YELLOW badge
-- ✅ ADMIN notified immediately
-- ✅ ADMIN can ONLY cancel (no edit/modify)
-- ✅ Canceled trips remain in database with full audit trail
+- :material-check-circle: System auto-flags trips based on predefined conditions
+- :material-check-circle: Flagged trips clearly marked with :material-circle:{.yellow} YELLOW badge
+- :material-check-circle: ADMIN notified immediately
+- :material-check-circle: ADMIN can ONLY cancel (no edit/modify)
+- :material-check-circle: Canceled trips remain in database with full audit trail
 
 ---
 
@@ -573,12 +573,12 @@ fee = (material_weight_kg / 1000) * material_price_per_ton
 
 **Success Criteria**:
 
-- ✅ Invoice generated within 1 minute of trip completion
-- ✅ Accurate fee calculation based on trip type and pricing model
-- ✅ Customer can pay via online, wallet, or cash
-- ✅ Wallet can go negative (with admin access control)
-- ✅ Cash payments require operator entry and moderator/admin approval
-- ✅ Monthly statements generated automatically
+- :material-check-circle: Invoice generated within 1 minute of trip completion
+- :material-check-circle: Accurate fee calculation based on trip type and pricing model
+- :material-check-circle: Customer can pay via online, wallet, or cash
+- :material-check-circle: Wallet can go negative (with admin access control)
+- :material-check-circle: Cash payments require operator entry and moderator/admin approval
+- :material-check-circle: Monthly statements generated automatically
 
 ---
 
@@ -612,7 +612,7 @@ fee = (material_weight_kg / 1000) * material_price_per_ton
    - Exit Weight (kg)
    - Net Weight (kg) or Material Weight (kg)
    - Fees (SAR)
-   - Badge Status (🟢🟡🔵🔴🟣)
+   - Badge Status (:material-circle:{.green} :material-circle:{.yellow} :material-circle:{.blue} :material-circle:{.red} :material-circle:{.purple})
 8. CLIENT can:
    - **View** in browser (paginated, 50 records per page)
    - **Print** report
@@ -658,13 +658,13 @@ fee = (material_weight_kg / 1000) * material_price_per_ton
 
 **Success Criteria**:
 
-- ✅ Customer can generate reports with flexible filters
-- ✅ Fixed date selections: Today, Last 7 days, This month
-- ✅ Custom date range supported
-- ✅ Export to Excel and PDF
-- ✅ Customer can submit report for review with reason
-- ✅ MODERATOR/ADMIN can review and approve with comments
-- ✅ Full audit trail of submission and review
+- :material-check-circle: Customer can generate reports with flexible filters
+- :material-check-circle: Fixed date selections: Today, Last 7 days, This month
+- :material-check-circle: Custom date range supported
+- :material-check-circle: Export to Excel and PDF
+- :material-check-circle: Customer can submit report for review with reason
+- :material-check-circle: MODERATOR/ADMIN can review and approve with comments
+- :material-check-circle: Full audit trail of submission and review
 
 </details>
 
