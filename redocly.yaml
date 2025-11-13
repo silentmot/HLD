@@ -4,25 +4,25 @@
 apis:
   trip-service@v1:
     root: docs/api/trip-service/openapi.yaml
-
+    
   device-service@v1:
     root: docs/api/device-service/openapi.yaml
-
+    
   vehicle-service@v1:
     root: docs/api/vehicle-service/openapi.yaml
-
+    
   contract-service@v1:
     root: docs/api/contract-service/openapi.yaml
-
+    
   user-service@v1:
     root: docs/api/user-service/openapi.yaml
-
+    
   payment-service@v1:
     root: docs/api/payment-service/openapi.yaml
-
+    
   reports-service@v1:
     root: docs/api/reports-service/openapi.yaml
-
+    
   inventory-service@v1:
     root: docs/api/inventory-service/openapi.yaml
 
@@ -41,10 +41,10 @@ theme:
   openapi:
     # Enable interactive API console
     tryItOut: true
-
+    
     # Remember authentication tokens
     authPersistence: localStorage
-
+    
     # Show request/response samples
     generateCodeSamples:
       languages:
@@ -52,10 +52,10 @@ theme:
         - lang: javascript
         - lang: python
         - lang: csharp
-
+    
     # Expand operations by default
     expandResponses: "200,201"
-
+    
     # Group by tags
     tagGroups:
       - name: Trip Management
